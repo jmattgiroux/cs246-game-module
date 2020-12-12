@@ -33,19 +33,7 @@ requirements:
     
 - PyCharm 2020.3
 
-- Visual Studio Code\
-Version: 1.50.1\
-Commit: d2e414d9e4239a252d1ab117bd7067f125afd80a\
-Date: 2020-10-13T14:44:48.716Z\
-Electron: 9.2.1\
-Chrome: 83.0.4103.122\
-Node.js: 12.14.1\
-V8: 8.3.110.13-electron.0\
-OS: Linux x64 5.4.0-52-generic
-
-- Visual Studio Code Extensions
-    - Python, by Microsoft
-
+- Visual Studio 2019 Version 16.8
 
 # Build and Execution Instructions:
 
