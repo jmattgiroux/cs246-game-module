@@ -23,16 +23,15 @@ requirements:
 
 # Development Environment: 
 
-- Ubuntu (Ubuntu 20.04.1 LTS) 
+- Windows 10
 
-- Python 3.8.5
+- Python 3.9.1
     - Project is implemented in Python
-
-- pip 20.0.2 
-    - Package installer for python
 
 - Arcade
     - Python package for creating games
+    
+- PyCharm 2020.3
 
 - Visual Studio Code\
 Version: 1.50.1\
