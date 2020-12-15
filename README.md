@@ -47,7 +47,13 @@ User Style
 
 - Gameplay, such as it is.
 
-![game gif]()
+![game gif](https://github.com/jmattgiroux/cs246-game-module/blob/master/game.gif)
+
+# Parts of game platform used:
+- any functions that descend from arcade, such as arcade.set_background_color()
+- the on_key_press and on_key_release functions
+- quite a lot from this website https://arcade.academy/examples/index.html, with all usages being cited 
+(it basically provided the bones that I started working from, as well as a starting point for each feature as I added it)
 
 # List of Useful Websites:
 
