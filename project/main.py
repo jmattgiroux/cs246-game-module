@@ -8,7 +8,7 @@ import arcade
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
-SCREEN_TITLE = "Space Doggo"
+SCREEN_TITLE = "Jake takes a walk"
 SPRITE_SCALING_PLAYER = 0.5
 MOVEMENT_SPEED = 2.0
 
@@ -82,15 +82,26 @@ class MyGame(arcade.Window):
         # I used the jpg of Jake the Dog from this web page:
         # https://pnghut.com/png/E9C6k1euM1/jake-the-dog-finn-human-pixel-art-puppy-adventure-time-transparent-png
         # it was created by a user named Ardenvin and posted on pnghut. Thank you Ardenvin.
-        self.player_sprite = arcade.Sprite("jakeTheDog.png",
+        self.player_sprite1 = arcade.Sprite("jakeTheDog.png",
                                            SPRITE_SCALING_PLAYER)
 
-        self.player_sprite.center_x = 50
-        self.player_sprite.center_y = 50
+        self.player_sprite1.center_x = 50
+        self.player_sprite1.center_y = 50
 
         # actually add player_sprite to player_list, since it
         # probably won't show up without doing this
-        self.player_list.append(self.player_sprite)
+        self.player_list.append(self.player_sprite1)
+
+        # will be changed to Jake
+        self.player_sprite2 = arcade.Sprite("jakeTheDog.png",
+                                           SPRITE_SCALING_PLAYER)
+
+        self.player_sprite2.center_x = 150
+        self.player_sprite2.center_y = 50
+
+        # actually add player_sprite to player_list, since it
+        # probably won't show up without doing this
+        self.player_list.append(self.player_sprite2)
 
     def on_draw(self):
         """
@@ -118,17 +129,29 @@ class MyGame(arcade.Window):
         # code copied from here:
         # https://arcade.academy/examples/sprite_move_keyboard_better.html
         # Calculate speed based on the keys pressed
-        self.player_sprite.change_x = 0
-        self.player_sprite.change_y = 0
+        self.player_sprite1.change_x = 0
+        self.player_sprite1.change_y = 0
 
         if self.up_pressed and not self.down_pressed:
-            self.player_sprite.change_y = MOVEMENT_SPEED
+            self.player_sprite1.change_y = MOVEMENT_SPEED
         elif self.down_pressed and not self.up_pressed:
-            self.player_sprite.change_y = -MOVEMENT_SPEED
+            self.player_sprite1.change_y = -MOVEMENT_SPEED
         if self.left_pressed and not self.right_pressed:
-            self.player_sprite.change_x = -MOVEMENT_SPEED
+            self.player_sprite1.change_x = -MOVEMENT_SPEED
         elif self.right_pressed and not self.left_pressed:
-            self.player_sprite.change_x = MOVEMENT_SPEED
+            self.player_sprite1.change_x = MOVEMENT_SPEED
+
+        self.player_sprite2.change_x = 0
+        self.player_sprite2.change_y = 0
+
+        if self.up_pressed and not self.down_pressed:
+            self.player_sprite2.change_y = MOVEMENT_SPEED
+        elif self.down_pressed and not self.up_pressed:
+            self.player_sprite2.change_y = -MOVEMENT_SPEED
+        if self.left_pressed and not self.right_pressed:
+            self.player_sprite2.change_x = -MOVEMENT_SPEED
+        elif self.right_pressed and not self.left_pressed:
+            self.player_sprite2.change_x = MOVEMENT_SPEED
 
         # Call update to move the sprite
         # If using a physics engine, call update player to rely on physics engine
