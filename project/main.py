@@ -10,6 +10,8 @@ SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 SCREEN_TITLE = "Space Doggo"
 SPRITE_SCALING_PLAYER = 0.5
+MOVEMENT_SPEED = 2.0
+
 
 # Here we add a new class, called Player, with heavy help from here:
 # https://arcade.academy/examples/sprite_move_keyboard_better.html
@@ -32,6 +34,7 @@ class Player(arcade.Sprite):
         elif self.bottom < 0:
             self.bottom = 0
 
+
 class MyGame(arcade.Window):
     """
     Main application class.
@@ -51,6 +54,18 @@ class MyGame(arcade.Window):
         self.player_list = None
 
         self.player_sprite = None
+
+        # code block below basically is for tracking arrow keys being pressed
+        # but it's only the variables, this part doesn't actually do anything
+        # other than pacify the compiler since creating variables on the fly
+        # in the code below, well, doesn't fly
+        # code gotten from here:
+        # https://arcade.academy/examples/sprite_move_keyboard_better.html
+        # Track the current state of what key is pressed
+        self.left_pressed = False
+        self.right_pressed = False
+        self.up_pressed = False
+        self.down_pressed = False
 
     # Here we basically decide what the game will be like when it starts
     def setup(self):
@@ -77,7 +92,6 @@ class MyGame(arcade.Window):
         # probably won't show up without doing this
         self.player_list.append(self.player_sprite)
 
-
     def on_draw(self):
         """
         Render the screen.
@@ -101,7 +115,28 @@ class MyGame(arcade.Window):
         Normally, you'll call update() on the sprite lists that
         need it.
         """
-        pass
+        # code copied from here:
+        # https://arcade.academy/examples/sprite_move_keyboard_better.html
+        # Calculate speed based on the keys pressed
+        self.player_sprite.change_x = 0
+        self.player_sprite.change_y = 0
+
+        if self.up_pressed and not self.down_pressed:
+            self.player_sprite.change_y = MOVEMENT_SPEED
+        elif self.down_pressed and not self.up_pressed:
+            self.player_sprite.change_y = -MOVEMENT_SPEED
+        if self.left_pressed and not self.right_pressed:
+            self.player_sprite.change_x = -MOVEMENT_SPEED
+        elif self.right_pressed and not self.left_pressed:
+            self.player_sprite.change_x = MOVEMENT_SPEED
+
+        # Call update to move the sprite
+        # If using a physics engine, call update player to rely on physics engine
+        # for movement, and call physics engine here.
+        # Jared Note: So, we created an update function in the player class, right?
+        # it seems the line below iterates through all the members of the player_list
+        # and calls each of their update functions
+        self.player_list.update()
 
     def on_key_press(self, key, key_modifiers):
         """
@@ -110,13 +145,36 @@ class MyGame(arcade.Window):
         For a full list of keys, see:
         http://arcade.academy/arcade.key.html
         """
-        pass
+        """Called whenever a key is pressed. """
+        # code copied from here:
+        # https://arcade.academy/examples/sprite_move_keyboard_better.html
+
+        if key == arcade.key.UP:
+            self.up_pressed = True
+        elif key == arcade.key.DOWN:
+            self.down_pressed = True
+        elif key == arcade.key.LEFT:
+            self.left_pressed = True
+        elif key == arcade.key.RIGHT:
+            self.right_pressed = True
 
     def on_key_release(self, key, key_modifiers):
         """
         Called whenever the user lets off a previously pressed key.
         """
-        pass
+        # code copied from here:
+        # https://arcade.academy/examples/sprite_move_keyboard_better.html
+
+        """Called when the user releases a key. """
+
+        if key == arcade.key.UP:
+            self.up_pressed = False
+        elif key == arcade.key.DOWN:
+            self.down_pressed = False
+        elif key == arcade.key.LEFT:
+            self.left_pressed = False
+        elif key == arcade.key.RIGHT:
+            self.right_pressed = False
 
 
 
