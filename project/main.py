@@ -48,7 +48,7 @@ class MyGame(arcade.Window):
         # I used the jpg of Jake the Dog from this web page:
         # https://pnghut.com/png/E9C6k1euM1/jake-the-dog-finn-human-pixel-art-puppy-adventure-time-transparent-png
         # it was created by a user named Ardenvin and posted on pnghut. Thank you Ardenvin.
-        self.player_sprite = arcade.Sprite("jakeTheDog.jpg",
+        self.player_sprite = arcade.Sprite("jakeTheDog.png",
                                            SPRITE_SCALING_PLAYER)
 
         self.player_sprite.center_x = 50
