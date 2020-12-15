@@ -6,11 +6,6 @@ template.
 
 If Python and Arcade are installed, this example can be run from the command line with:
 python -m arcade.examples.starting_template
-
-Anything that goes beyond the Starting Temple from
-https://arcade.academy/examples/starting_template.html#starting-template
-is denoted by this symbol - ****
-
 """
 import arcade
 
