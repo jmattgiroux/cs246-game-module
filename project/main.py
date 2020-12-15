@@ -1,28 +1,22 @@
 """
-Starting Template
-
-Once you have learned how to use classes, you can begin your program with this
-template.
-
-If Python and Arcade are installed, this example can be run from the command line with:
-python -m arcade.examples.starting_template
+Space Doggo Game:
+This project uses the code from
+https://arcade.academy/examples/starting_template.html
+as a, well, starting template, and from there features have been added 1 by 1.
 """
 import arcade
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
-SCREEN_TITLE = "Starting Template"
+SCREEN_TITLE = "Space Doggo"
 
 
 class MyGame(arcade.Window):
     """
     Main application class.
-
-    NOTE: Go ahead and delete the methods you don't need.
-    If you do need a method, delete the 'pass' and replace it
-    with your own code. Don't leave 'pass' in this program.
     """
 
+    # Here we basically declare what is going to be in the game
     def __init__(self, width, height, title):
         super().__init__(width, height, title)
 
@@ -31,10 +25,34 @@ class MyGame(arcade.Window):
         # If you have sprite lists, you should create them here,
         # and set them to None
 
+        # https://arcade.academy/examples/sprite_collect_coins.html
+        # declare our player_list and set it to None
+        self.player_list = None
+
+        self.player_sprite = None
+
+    # Here we basically decide what the game will be like when it starts
     def setup(self):
         """ Set up the game variables. Call to re-start the game. """
         # Create your sprites and sprite lists here
-        pass
+
+        # Sprite lists
+        # https://arcade.academy/examples/sprite_collect_coins.html
+        # Here we make the player_list list able to handle Sprite resources in a list
+        # https://arcade.academy/_modules/arcade/sprite_list.html
+        self.player_list = arcade.SpriteList()
+
+        # https://arcade.academy/examples/sprite_collect_coins.html
+        # https://arcade.academy/resources.html#resources-images-animated-characters-female-adventurer
+        self.player_sprite = arcade.Sprite("resources:images/animated_characters/female_adventurer/femaleAdventurer_fall.png")
+
+        self.player_sprite.center_x = 50
+        self.player_sprite.center_y = 50
+
+        # actually add player_sprite to player_list, since it
+        # probably won't show up without doing this
+        self.player_list.append(self.player_sprite)
+
 
     def on_draw(self):
         """
@@ -44,6 +62,12 @@ class MyGame(arcade.Window):
         # This command should happen before we start drawing. It will clear
         # the screen to the background color, and erase what we drew last frame.
         arcade.start_render()
+
+        # https://arcade.academy/examples/sprite_collect_coins.html
+        # right, as I said above, we're drawing the player_list, not
+        # the player_sprite, hence player_sprite needs to be added to
+        # player_list
+        self.player_list.draw()
 
         # Call draw() on all your sprite lists below
 
@@ -70,23 +94,7 @@ class MyGame(arcade.Window):
         """
         pass
 
-    def on_mouse_motion(self, x, y, delta_x, delta_y):
-        """
-        Called whenever the mouse moves.
-        """
-        pass
 
-    def on_mouse_press(self, x, y, button, key_modifiers):
-        """
-        Called when the user presses a mouse button.
-        """
-        pass
-
-    def on_mouse_release(self, x, y, button, key_modifiers):
-        """
-        Called when a user releases a mouse button.
-        """
-        pass
 
 
 def main():
