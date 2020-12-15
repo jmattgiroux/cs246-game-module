@@ -1,136 +1,103 @@
 """
-Sprite Move With Walls
+Starting Template
 
-Simple program to show basic sprite usage.
-
-Artwork from http://kenney.nl
+Once you have learned how to use classes, you can begin your program with this
+template.
 
 If Python and Arcade are installed, this example can be run from the command line with:
-python -m arcade.examples.sprite_move_walls
+python -m arcade.examples.starting_template
 
-https://arcade.academy/examples/sprite_move_walls.html#sprite-move-walls
+Anything that goes beyond the Starting Temple from
+https://arcade.academy/examples/starting_template.html#starting-template
+is denoted by this symbol - ****
 
-Program is changed where comments specify, denoted with this symbol - ****
-Ctrl-F and searching for '****' leads to my edits.
 """
-
 import arcade
-import os
-
-"""**** Made character Sprite bigger"""
-SPRITE_SCALING = 0.8
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
-SCREEN_TITLE = "Sprite Move with Walls Example"
-
-MOVEMENT_SPEED = 5
+SCREEN_TITLE = "Starting Template"
 
 
 class MyGame(arcade.Window):
-    """ Main application class. """
+    """
+    Main application class.
+
+    NOTE: Go ahead and delete the methods you don't need.
+    If you do need a method, delete the 'pass' and replace it
+    with your own code. Don't leave 'pass' in this program.
+    """
 
     def __init__(self, width, height, title):
-        """
-        Initializer
-        """
         super().__init__(width, height, title)
 
-        # Set the working directory (where we expect to find files) to the same
-        # directory this .py file is in. You can leave this out of your own
-        # code, but it is needed to easily run the examples using "python -m"
-        # as mentioned at the top of this program.
-        file_path = os.path.dirname(os.path.abspath(__file__))
-        os.chdir(file_path)
+        arcade.set_background_color(arcade.color.AMAZON)
 
-        # Sprite lists
-        self.coin_list = None
-        self.wall_list = None
-        self.player_list = None
-
-        # Set up the player
-        self.player_sprite = None
-        self.physics_engine = None
+        # If you have sprite lists, you should create them here,
+        # and set them to None
 
     def setup(self):
-        """ Set up the game and initialize the variables. """
-
-        # Sprite lists
-        self.player_list = arcade.SpriteList()
-        self.wall_list = arcade.SpriteList()
-
-        # Set up the player
-        self.player_sprite = arcade.Sprite(":resources:images/animated_characters/female_person/femalePerson_idle.png",
-                                           SPRITE_SCALING)
-        self.player_sprite.center_x = 50
-        self.player_sprite.center_y = 64
-        self.player_list.append(self.player_sprite)
-
-        # -- Set up the walls
-        # Create a row of boxes
-        for x in range(173, 650, 64):
-            wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", SPRITE_SCALING)
-            wall.center_x = x
-            wall.center_y = 200
-            self.wall_list.append(wall)
-
-        # Create a column of boxes
-        for y in range(273, 500, 64):
-            wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", SPRITE_SCALING)
-            wall.center_x = 465
-            wall.center_y = y
-            self.wall_list.append(wall)
-
-        self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite,
-                                                         self.wall_list)
-
-        # Set the background color
-        arcade.set_background_color(arcade.color.AMAZON)
+        """ Set up the game variables. Call to re-start the game. """
+        # Create your sprites and sprite lists here
+        pass
 
     def on_draw(self):
         """
         Render the screen.
         """
 
-        # This command has to happen before we start drawing
+        # This command should happen before we start drawing. It will clear
+        # the screen to the background color, and erase what we drew last frame.
         arcade.start_render()
 
-        # Draw all the sprites.
-        self.wall_list.draw()
-        self.player_list.draw()
-
-    def on_key_press(self, key, modifiers):
-        """Called whenever a key is pressed. """
-
-        if key == arcade.key.UP:
-            self.player_sprite.change_y = MOVEMENT_SPEED
-        elif key == arcade.key.DOWN:
-            self.player_sprite.change_y = -MOVEMENT_SPEED
-        elif key == arcade.key.LEFT:
-            self.player_sprite.change_x = -MOVEMENT_SPEED
-        elif key == arcade.key.RIGHT:
-            self.player_sprite.change_x = MOVEMENT_SPEED
-
-    def on_key_release(self, key, modifiers):
-        """Called when the user releases a key. """
-
-        if key == arcade.key.UP or key == arcade.key.DOWN:
-            self.player_sprite.change_y = 0
-        elif key == arcade.key.LEFT or key == arcade.key.RIGHT:
-            self.player_sprite.change_x = 0
+        # Call draw() on all your sprite lists below
 
     def on_update(self, delta_time):
-        """ Movement and game logic """
+        """
+        All the logic to move, and the game logic goes here.
+        Normally, you'll call update() on the sprite lists that
+        need it.
+        """
+        pass
 
-        # Call update on all sprites (The sprites don't do much in this
-        # example though.)
-        self.physics_engine.update()
+    def on_key_press(self, key, key_modifiers):
+        """
+        Called whenever a key on the keyboard is pressed.
+
+        For a full list of keys, see:
+        http://arcade.academy/arcade.key.html
+        """
+        pass
+
+    def on_key_release(self, key, key_modifiers):
+        """
+        Called whenever the user lets off a previously pressed key.
+        """
+        pass
+
+    def on_mouse_motion(self, x, y, delta_x, delta_y):
+        """
+        Called whenever the mouse moves.
+        """
+        pass
+
+    def on_mouse_press(self, x, y, button, key_modifiers):
+        """
+        Called when the user presses a mouse button.
+        """
+        pass
+
+    def on_mouse_release(self, x, y, button, key_modifiers):
+        """
+        Called when a user releases a mouse button.
+        """
+        pass
 
 
 def main():
     """ Main method """
-    window = MyGame(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
-    window.setup()
+    game = MyGame(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
+    game.setup()
     arcade.run()
 
 
