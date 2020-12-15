@@ -9,6 +9,7 @@ import arcade
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 SCREEN_TITLE = "Space Doggo"
+SPRITE_SCALING_PLAYER = 0.5
 
 
 class MyGame(arcade.Window):
@@ -44,7 +45,7 @@ class MyGame(arcade.Window):
 
         # https://arcade.academy/examples/sprite_collect_coins.html
         # https://arcade.academy/resources.html#resources-images-animated-characters-female-adventurer
-        self.player_sprite = arcade.Sprite("resources:images/animated_characters/female_adventurer/femaleAdventurer_fall.png")
+        self.player_sprite = arcade.Sprite("resources:images/animated_characters/female_adventurer/femaleAdventurer_fall.png", SPRITE_SCALING_PLAYER)
 
         self.player_sprite.center_x = 50
         self.player_sprite.center_y = 50
