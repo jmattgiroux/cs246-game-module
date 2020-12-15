@@ -82,22 +82,23 @@ class MyGame(arcade.Window):
         # I used the jpg of Jake the Dog from this web page:
         # https://pnghut.com/png/E9C6k1euM1/jake-the-dog-finn-human-pixel-art-puppy-adventure-time-transparent-png
         # it was created by a user named Ardenvin and posted on pnghut. Thank you Ardenvin.
-        self.player_sprite1 = arcade.Sprite("jakeTheDog.png",
-                                           SPRITE_SCALING_PLAYER)
+        self.player_sprite1 = arcade.Sprite("jakeTheDog.jpg",
+                                            0.1)
 
         self.player_sprite1.center_x = 50
-        self.player_sprite1.center_y = 50
+        self.player_sprite1.center_y = 55
 
         # actually add player_sprite to player_list, since it
         # probably won't show up without doing this
         self.player_list.append(self.player_sprite1)
 
-        # our boy Finn
+        # our boy Finn, courtesy of 9664c of pixelartmaker.com
+        # Source: http://pixelartmaker.com/art/d3958f40566eb74
         self.player_sprite2 = arcade.Sprite("finnTheHuman.png",
-                                           SPRITE_SCALING_PLAYER)
+                                            0.3)
 
         self.player_sprite2.center_x = 150
-        self.player_sprite2.center_y = 50
+        self.player_sprite2.center_y = 80
 
         # actually add player_sprite to player_list, since it
         # probably won't show up without doing this
