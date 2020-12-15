@@ -11,6 +11,26 @@ SCREEN_HEIGHT = 600
 SCREEN_TITLE = "Space Doggo"
 SPRITE_SCALING_PLAYER = 0.5
 
+# Here we add a new class, called Player, with heavy help from here:
+# https://arcade.academy/examples/sprite_move_keyboard_better.html
+class Player(arcade.Sprite):
+
+    def update(self):
+
+        # this code moves our Jake
+        self.center_y += self.change_y
+        self.center_x += self.change_x
+
+        # this code keeps Jake trapped within the game screen
+        if self.left < 0:
+            self.left = 0
+        elif self.right > SCREEN_WIDTH - 1:
+            self.right = SCREEN_WIDTH - 1
+
+        if self.top > SCREEN_HEIGHT - 1:
+            self.top = SCREEN_HEIGHT -1
+        elif self.bottom < 0:
+            self.bottom = 0
 
 class MyGame(arcade.Window):
     """
@@ -44,7 +64,6 @@ class MyGame(arcade.Window):
         self.player_list = arcade.SpriteList()
 
         # https://arcade.academy/examples/sprite_collect_coins.html
-        # https://arcade.academy/resources.html#resources-images-animated-characters-female-adventurer
         # I used the jpg of Jake the Dog from this web page:
         # https://pnghut.com/png/E9C6k1euM1/jake-the-dog-finn-human-pixel-art-puppy-adventure-time-transparent-png
         # it was created by a user named Ardenvin and posted on pnghut. Thank you Ardenvin.
