@@ -6,8 +6,8 @@ as a, well, starting template, and from there features have been added 1 by 1.
 """
 import arcade
 
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
+SCREEN_WIDTH = 1280
+SCREEN_HEIGHT = 720
 SCREEN_TITLE = "The boys take a walk"
 SPRITE_SCALING_PLAYER = 0.5
 MOVEMENT_SPEED = 2.0
@@ -44,6 +44,8 @@ class MyGame(arcade.Window):
     def __init__(self, width, height, title):
         super().__init__(width, height, title)
 
+        self.background = None
+
         arcade.set_background_color(arcade.color.AMAZON)
 
         # If you have sprite lists, you should create them here,
@@ -72,6 +74,13 @@ class MyGame(arcade.Window):
         """ Set up the game variables. Call to re-start the game. """
         # Create your sprites and sprite lists here
 
+        # here we change the background to something nice
+        # via this tutorial
+        # https://arcade.academy/examples/sprite_collect_coins_background.html
+        # image source: ronk420 on Imgur. Link:
+        # https://imgur.com/gallery/SU6bL
+        self.background = arcade.load_texture("background.jpeg")
+
         # Sprite lists
         # https://arcade.academy/examples/sprite_collect_coins.html
         # Here we make the player_list list able to handle Sprite resources in a list
@@ -83,10 +92,10 @@ class MyGame(arcade.Window):
         # https://pnghut.com/png/E9C6k1euM1/jake-the-dog-finn-human-pixel-art-puppy-adventure-time-transparent-png
         # it was created by a user named Ardenvin and posted on pnghut. Thank you Ardenvin.
         self.player_sprite1 = arcade.Sprite("jakeTheDog.jpg",
-                                            0.1)
+                                            0.05)
 
         self.player_sprite1.center_x = 50
-        self.player_sprite1.center_y = 55
+        self.player_sprite1.center_y = 50
 
         # actually add player_sprite to player_list, since it
         # probably won't show up without doing this
@@ -95,10 +104,10 @@ class MyGame(arcade.Window):
         # our boy Finn, courtesy of 9664c of pixelartmaker.com
         # Source: http://pixelartmaker.com/art/d3958f40566eb74
         self.player_sprite2 = arcade.Sprite("finnTheHuman.png",
-                                            0.3)
+                                            0.15)
 
-        self.player_sprite2.center_x = 150
-        self.player_sprite2.center_y = 80
+        self.player_sprite2.center_x = 100
+        self.player_sprite2.center_y = 60
 
         # actually add player_sprite to player_list, since it
         # probably won't show up without doing this
@@ -112,6 +121,12 @@ class MyGame(arcade.Window):
         # This command should happen before we start drawing. It will clear
         # the screen to the background color, and erase what we drew last frame.
         arcade.start_render()
+
+        # here we draw the background, according to this tutorial:
+        # https://arcade.academy/examples/sprite_collect_coins_background.html
+        arcade.draw_lrwh_rectangle_textured(0, 0,
+                                            SCREEN_WIDTH, SCREEN_HEIGHT,
+                                            self.background)
 
         # https://arcade.academy/examples/sprite_collect_coins.html
         # right, as I said above, we're drawing the player_list, not
