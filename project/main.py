@@ -45,7 +45,7 @@ class MyGame(arcade.Window):
 
         # https://arcade.academy/examples/sprite_collect_coins.html
         # https://arcade.academy/resources.html#resources-images-animated-characters-female-adventurer
-        self.player_sprite = arcade.Sprite(":resources:images/animated_characters/female_person/femalePerson_idle.png",
+        self.player_sprite = arcade.Sprite("jakeTheDog.jpg",
                                            SPRITE_SCALING_PLAYER)
 
         self.player_sprite.center_x = 50
