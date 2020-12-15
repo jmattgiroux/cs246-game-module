@@ -45,6 +45,9 @@ class MyGame(arcade.Window):
 
         # https://arcade.academy/examples/sprite_collect_coins.html
         # https://arcade.academy/resources.html#resources-images-animated-characters-female-adventurer
+        # I used the jpg of Jake the Dog from this web page:
+        # https://pnghut.com/png/E9C6k1euM1/jake-the-dog-finn-human-pixel-art-puppy-adventure-time-transparent-png
+        # it was created by a user named Ardenvin and posted on pnghut. Thank you Ardenvin.
         self.player_sprite = arcade.Sprite("jakeTheDog.jpg",
                                            SPRITE_SCALING_PLAYER)
 
