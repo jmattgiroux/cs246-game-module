@@ -8,7 +8,7 @@ import arcade
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
-SCREEN_TITLE = "Jake takes a walk"
+SCREEN_TITLE = "The boys take a walk"
 SPRITE_SCALING_PLAYER = 0.5
 MOVEMENT_SPEED = 2.0
 
@@ -92,8 +92,8 @@ class MyGame(arcade.Window):
         # probably won't show up without doing this
         self.player_list.append(self.player_sprite1)
 
-        # will be changed to Jake
-        self.player_sprite2 = arcade.Sprite("jakeTheDog.png",
+        # our boy Finn
+        self.player_sprite2 = arcade.Sprite("finnTheHuman.png",
                                            SPRITE_SCALING_PLAYER)
 
         self.player_sprite2.center_x = 150
